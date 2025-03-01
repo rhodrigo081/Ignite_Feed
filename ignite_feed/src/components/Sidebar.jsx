@@ -1,6 +1,6 @@
 import styles from "./Sidebar.module.css";
-import fotoDePerfil from "../assets/Foto_Perfil.jpeg";
-import EditorPen from "../assets/Editor_Pen.svg";
+import { PencilLine } from "phosphor-react";
+/* import EditorPen from "../assets/Editor_Pen.svg"; */
 
 export function Sidebar() {
   return (
@@ -11,14 +11,16 @@ export function Sidebar() {
       />
 
       <div className={styles.profile}>
-      <img src={fotoDePerfil} className={styles.profilePic}/>
+        <img
+          src="https://avatars.githubusercontent.com/u/116917401?v=4"
+          className={styles.avatar}
+        />
         <strong>Rhodrigo Rodrigues</strong>
         <span>Studant Developer</span>
       </div>
-
       <footer>
         <a href="#">
-          <img src={EditorPen} alt="" /> Editar Perfil
+          <PencilLine size={20} weight="bold"/> Editar Perfil
         </a>
       </footer>
     </aside>
