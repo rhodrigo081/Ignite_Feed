@@ -2,8 +2,8 @@
   max-width: 70rem;
   margin: 2rem auto;
   padding: 0 1rem;
-  display: flex;
+  display: grid;
   grid-template-columns: 256px 1fr;
-  gap: 2rem;
+  gap: 5rem;
   align-items: flex-start;
 }

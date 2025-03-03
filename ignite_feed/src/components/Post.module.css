@@ -1,0 +1,49 @@
+.post {
+  background: var(--gray-800);
+  border-radius: 8px;
+  padding: 2.5rem;
+
+  && > header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    && time {
+      font-size: 0.875rem;
+      color: var(--gray-400);
+    }
+  }
+
+  && .avatar {
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50px;
+    background: var(--gray-800);
+    padding: 4px;
+    border: 2px solid var(--green-500);
+  }
+
+  && + .post {
+    margin-top: 1rem;
+  }
+
+  && .content {
+    line-height: 1.6;
+    color: var(--gray-300);
+    margin-top: 1.5rem;
+
+    && p {
+      margin-top: 1rem;
+    }
+    && a {
+      font-weight: bold;
+      color: var(--green-500);
+      text-decoration: none;
+      transition: all 0.5s ease-in;
+    }
+    && a:hover {
+      color: var(--green-300);
+      transition: all 0.5s ease-in;
+    }
+  }
+}
