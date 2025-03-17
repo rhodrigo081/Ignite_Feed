@@ -16,14 +16,6 @@
     align-items: center;
     margin-top: -2rem;
 
-    && .avatar {
-      width: 5rem;
-      height: 5rem;
-      border-radius: 50px;
-      background: var(--gray-800);
-      padding: 4px;
-      border: 2px solid var(--green-500);
-    }
 
     && strong {
       margin-top: 1rem;
@@ -60,10 +52,10 @@
       transition: .5s ease-in-out;
     }
 
-    && a:hover{
+    && a:hover {
       transition: .5s ease-in-out;
       color: var(--white);
-      background: var(--green-500) ;
+      background: var(--green-500);
     }
   }
 }

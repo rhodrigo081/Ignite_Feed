@@ -1,16 +1,16 @@
 import styles from "./Post.module.css";
-import janeCooper from "../assets/Jane_Cooper.svg";
 import { CommentArea } from "./CommentArea.jsx";
+import { Avatar } from "./Avatar";
 
 export function Post() {
   return (
     <article className={styles.post}>
       <header>
         <div className={styles.author}>
-          <img className={styles.avatar} src={janeCooper} />
+          <Avatar hasBorder={true} src="https://github.com/rhodrigo081.png" />
           <div className={styles.authorinfo}>
-            <strong>Jane Cooper</strong>
-            <span>Front-End Developer</span>
+            <strong>Rhodrigo Rodrigues</strong>
+            <span>Studant Development</span>
           </div>
         </div>
         <time title="02 de Fevereiro às 12:35" dateTime="2025-02-28 12:35:15">
@@ -39,9 +39,9 @@ export function Post() {
       </form>
 
       <div className={styles.commentList}>
-        <CommentArea/>
-        <CommentArea/>
-        <CommentArea/>
+        <CommentArea />
+        <CommentArea />
+        <CommentArea />
       </div>
     </article>
   );
