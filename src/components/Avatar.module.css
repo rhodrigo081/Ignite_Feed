@@ -4,10 +4,10 @@
     border-radius: 50px;
 }
 
+
 .avatarWithBorder {
     width: calc(3rem + 12px);
     height: calc(3rem + 12px);
-    ;
     background: var(--gray-800);
     padding: 4px;
     border: 2px solid var(--green-500);
