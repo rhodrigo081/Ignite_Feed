@@ -1,6 +1,6 @@
 import styles from "./Post.module.css";
 import { CommentArea } from "./CommentArea.jsx";
-import { Avatar } from "./Avatar";
+import { Avatar } from "./Avatar.jsx";
 
 export function Post() {
   return (
