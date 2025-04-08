@@ -1,8 +1,21 @@
 import { ThumbsUp, Trash } from "phosphor-react";
 import styles from "./CommentArea.module.css";
 import { Avatar } from "./Avatar.jsx";
+import { useState } from "react";
 
-export function CommentArea({ content }) {
+export function CommentArea({ content, onDeleteComment }) {
+
+  const [likeCount, setLikeCount] = useState(0);
+
+  function handleDeleteComment(){ 
+    event.preventDefault();
+    onDeleteComment(content)
+  }
+
+  function handleLikeComment(){
+    setLikeCount(likeCount + 1);
+  }
+
   return (
     <div className={styles.commentArea}>
       <Avatar hasBorder={false} src="https://github.com/rhodrigo081.png" />
@@ -19,16 +32,16 @@ export function CommentArea({ content }) {
               </time>
             </div>
 
-            <button title="Deletar Comentário">
+            <button onClick={handleDeleteComment} title="Deletar Comentário">
               <Trash size={24} />
             </button>
           </header>
           <p>{content}</p>
         </div>
         <footer>
-          <button>
+          <button onClick={handleLikeComment}>
             <ThumbsUp />
-            Aplaudir <span>20</span>
+            Aplaudir <span>{likeCount}</span>
           </button>
         </footer>
       </div>

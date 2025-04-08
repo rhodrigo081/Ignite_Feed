@@ -5,11 +5,11 @@ import { format, formatDistanceToNow } from "date-fns";
 import { ptBR } from "date-fns/locale/pt-BR";
 import { useState } from "react";
 
-export function Post({ author, publishedAt, content }) {
+export function Post({ author, publishedAt, content }) { 
   const [comments, setComments] = useState([]);
 
-  const [newCommentText, setNewCommentText] = useState('')
-  
+  const [newCommentText, setNewCommentText] = useState("");
+
   const publishedDateFormate = format(
     publishedAt,
     "d 'de' LLLL 'às' HH:mm'h'",
@@ -23,19 +23,32 @@ export function Post({ author, publishedAt, content }) {
     addSuffix: true,
   });
 
-  function handleCommentChange(){
-    setNewCommentText(event.target.value)
+  function handleCommentChange() {
+
+    event.target.setCustomValidity("")
+    setNewCommentText(event.target.value);
   }
 
   function handleNewComment() {
     event.preventDefault();
 
-    const newComment = event.target.commentText.value;
-
-    event.target.commentText.value = "";
-
-    setComments([...comments, newComment]);
+    setComments([...comments, newCommentText]);
+    setNewCommentText("");
   }
+
+  function handleNewCommentInvalid(){
+    event.target.setCustomValidity("Este campo é obrigatório! ")
+  }
+
+  function deleteComment(commentToDelete) {
+    const commentWithoutDeletedOne = comments.filter(comment => {
+      return comment !== commentToDelete;
+    })
+
+    setComments(commentWithoutDeletedOne);
+  }
+
+  const isNewCommentEmpty = newCommentText.length === 0
 
   return (
     <article className={styles.post}>
@@ -54,10 +67,10 @@ export function Post({ author, publishedAt, content }) {
       <div className={styles.content}>
         {content.map((line) => {
           if (line.type === "paragraph") {
-            return <p>{line.content}</p>;
+            return <p key={line.content}>{line.content}</p>;
           } else if (line.type === "link") {
             return (
-              <p>
+              <p key={line.content}>
                 <a href="">{line.content}</a>
               </p>
             );
@@ -67,16 +80,30 @@ export function Post({ author, publishedAt, content }) {
 
       <form onSubmit={handleNewComment} className={styles.commentForm}>
         <strong>Deixe seu feedback</strong>
-        <textarea name="commentText" placeholder="Deixe um comentário..." 
-        onChange={handleCommentChange}/>
+        <textarea
+          name="comment"
+          placeholder="Deixe um comentário..."
+          value={newCommentText}
+          onChange={handleCommentChange}
+          onInvalid={handleNewCommentInvalid}
+          required
+        />
         <footer>
-          <button type="submit">Publicar</button>
+          <button type="submit" disabled={isNewCommentEmpty}>
+            Publicar
+            </button>
         </footer>
       </form>
 
       <div className={styles.commentList}>
         {comments.map((comment) => {
-          return <CommentArea content={comment} />;
+          return (
+            <CommentArea
+              key={comment}
+              content={comment}
+              onDeleteComment={deleteComment}
+            />
+          );
         })}
       </div>
     </article>
